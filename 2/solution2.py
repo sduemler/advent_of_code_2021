@@ -25,3 +25,20 @@ for i in range(len(directions)):
         y -= dist
 
 print(x * y)
+
+x = 0
+y = 0
+aim = 0
+
+for i in range(len(directions)):
+    dir = directions[i][0]
+    dist = directions[i][1]
+    if dir == 'forward':
+        x += dist
+        y += (dist * aim)
+    elif dir == 'down':
+        aim += dist
+    elif dir == 'up':
+        aim -= dist
+
+print(x * y)
