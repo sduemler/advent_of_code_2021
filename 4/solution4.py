@@ -47,13 +47,40 @@ for c in calls:
     if(winBoard > -1):
         break
 
-print(drawn)
-print(winNum)
-print(winRow)
-print(boards[winBoard])
+total = 0
+for x in range(len(boards[winBoard])):
+    for y in boards[winBoard][x]:
+        if y not in drawn:
+            total += y
 
+print(total * winNum)
+
+drawn = []
+keys = list(posWins.keys())
+winBoard = -1
+winNum = -1
+
+while(len(keys) > 1):
+    for c in calls:
+        print(len(keys))
+        drawn.append((int(c)))
+        for k in keys:
+            win = []
+            for x in posWins[k]:
+                if set(x).issubset(set(drawn)):
+                    keys.pop(keys.index(k))
+                    if len(keys) == 0:
+                        winBoard = k
+                        winNum = int(c)
+                    break
+            if(winBoard > -1):
+                break
+        if(winBoard > -1):
+            break
 
 total = 0
+print(boards[winBoard])
+print(winNum)
 for x in range(len(boards[winBoard])):
     for y in boards[winBoard][x]:
         if y not in drawn:
