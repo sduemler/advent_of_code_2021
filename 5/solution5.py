@@ -28,5 +28,22 @@ for line in lines:
                 field[str([x, line[0][1]])] = 1
             else:
                 field[str([x, line[0][1]])] = field[str([x, line[0][1]])] + 1
+    else:
+        if(line[0][0] > line[1][0]):
+            xLess = line[1]
+            other = line[0]
+        else:
+            xLess = line[0]
+            other = line[1]
+        y = xLess[1]
+        for x in range(xLess[0], other[0]+1):
+            if (str([x, y]) not in field.keys()):
+                field[str([x, y])] = 1
+            else:
+                field[str([x, y])] = field[str([x, y])] + 1
+            if(xLess[1] < other[1]):
+                y += 1
+            else:
+                y -= 1
 
 print(len(field.values()) - list(field.values()).count(1))
